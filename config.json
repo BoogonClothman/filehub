@@ -1,0 +1,5 @@
+{
+  "port": 5000,
+  "dataRoot": "./data",
+  "maxUploadMB": 100
+}

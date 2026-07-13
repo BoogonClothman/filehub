@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FileHub</title>
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div id="app">
+  <header id="toolbar">
+    <div id="breadcrumb"></div>
+    <div id="toolbar-actions">
+      <button id="btn-upload" title="上传文件">📤 上传</button>
+      <button id="btn-newdir" title="新建目录">📁 新建</button>
+    </div>
+  </header>
+
+  <div id="drop-zone">
+    <div id="drop-hint">拖拽文件到此处上传</div>
+    <ul id="file-list"></ul>
+    <div id="empty-hint">此目录为空</div>
+    <div id="loading">加载中…</div>
+    <div id="error-msg" style="display:none"></div>
+  </div>
+</div>
+
+<!-- Context menu -->
+<div id="context-menu" class="hidden">
+  <button data-action="rename">✏️ 重命名</button>
+  <button data-action="preview">🖼️ 预览</button>
+  <button data-action="delete" class="danger">🗑️ 删除</button>
+</div>
+
+<!-- New directory dialog -->
+<dialog id="dialog-newdir">
+  <form method="dialog">
+    <h3>新建目录</h3>
+    <input type="text" id="input-newdir" placeholder="目录名" autocomplete="off">
+    <footer>
+      <button type="submit" class="btn-primary">创建</button>
+      <button type="button" class="btn-cancel" data-close>取消</button>
+    </footer>
+  </form>
+</dialog>
+
+<!-- Rename dialog -->
+<dialog id="dialog-rename">
+  <form method="dialog">
+    <h3>重命名</h3>
+    <input type="text" id="input-rename" placeholder="新名称" autocomplete="off">
+    <footer>
+      <button type="submit" class="btn-primary">确定</button>
+      <button type="button" class="btn-cancel" data-close>取消</button>
+    </footer>
+  </form>
+</dialog>
+
+<!-- Delete confirmation dialog -->
+<dialog id="dialog-delete">
+  <form method="dialog">
+    <h3>确认删除</h3>
+    <p id="delete-name"></p>
+    <footer>
+      <button type="submit" class="btn-danger">删除</button>
+      <button type="button" class="btn-cancel" data-close>取消</button>
+    </footer>
+  </form>
+</dialog>
+
+<!-- Preview dialog -->
+<dialog id="dialog-preview">
+  <div id="preview-container">
+    <button id="preview-close" class="btn-close" data-close>&times;</button>
+    <img id="preview-img" src="" alt="预览">
+    <p id="preview-name"></p>
+  </div>
+</dialog>
+
+<!-- Hidden file input -->
+<input type="file" id="file-input" multiple hidden>
+
+<script src="/js/app.js"></script>
+</body>
+</html>
