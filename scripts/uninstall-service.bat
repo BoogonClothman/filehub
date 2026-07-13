@@ -1,4 +1,5 @@
-@echo off
+﻿@echo off
+chcp 65001 >nul
 :: FileHub — Remove Windows Service
 :: Requires Administrator privileges
 :: Usage: 右键 → 以管理员身份运行

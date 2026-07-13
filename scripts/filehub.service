@@ -1,0 +1,22 @@
+[Unit]
+Description=FileHub — LAN File Sharing
+Documentation=https://github.com/BoogonClothman/private-file-control
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/opt/filehub/filehub
+WorkingDirectory=/opt/filehub
+Restart=always
+RestartSec=5
+
+# Security hardening (optional — tighten as needed)
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=no
+ReadWritePaths=/opt/filehub/data
+ReadOnlyPaths=/opt/filehub/config.json
+
+[Install]
+WantedBy=multi-user.target
